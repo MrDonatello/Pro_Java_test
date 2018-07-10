@@ -3,7 +3,7 @@ import java.util.ArrayList;
 class University {
 
         private Faculty faculty;
-        int indexGroup;
+        int indexGroup;//сдесь экземпляр класса а не инт
         int indexCourses;
         int indexFaculty;
 
