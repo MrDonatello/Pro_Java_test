@@ -2,16 +2,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Schedule {
-    //ВОЗВРАЩАЕТ РАСПИСАНИЕ (2 ПЕРЕМЕННЫЕ ДОЛЖНЫ ИСПОЛЬЗОВАТЬСЯ ДЛЯ SQL)
-    ArrayList<String[]> getSchedule(int indexGroup, int indexFaculty, int indexCourses ){
 
-        ArrayList <String[]> scheduleList = new ArrayList<String[]> ();
+    //ВОЗВРАЩАЕТ РАСПИСАНИЕ (2 ПЕРЕМЕННЫЕ ДОЛЖНЫ ИСПОЛЬЗОВАТЬСЯ ДЛЯ SQL)
+    ArrayList<String[]> getSchedule(int indexGroup, int indexFaculty, int indexCourses) {
+
+        ArrayList<String[]> scheduleList = new ArrayList<String[]>();
 
         switch (indexGroup) {
 
             case 1: {
                 String[][] strings = new String[][]{
-                        {"пары нет :)", "Проектирование и тестирование", "Операционные системы", "Философия", "",""},                        //пн
+                        {"пары нет :)", "Проектирование и тестирование", "Операционные системы", "Философия", "", ""},                        //пн
                         {" Операционные системы", "Базы данных", "Иностранный язык", "Электротехника", "Математика", "Электротехника"},       //вт
                         {" Базы данных", "Операционные системы", "Иностранный язык", "Операционные системы", "Базы данных", "Философия"},     //ср
                         {" Математика", "Операционные системы", "Базы данных", "Электротехника", "Иностранный язык", "Электротехника"},       //чт

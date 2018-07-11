@@ -2,39 +2,60 @@ import java.util.ArrayList;
 
 class University {
 
-        private Faculty faculty;
-        int indexGroup;//сдесь экземпляр класса а не инт
-        int indexCourses;
-        int indexFaculty;
+    private Faculty faculty;
+    private Group group;
+    private Courses courses;
+    private Schedule schedule;
 
-        //КОНСТРУКТОР
-        University(){
 
-            this.faculty = new Faculty();
-        }
+    //КОНСТРУКТОР
+    University() {
 
-        //ВОЗВРАЩАЕТ ИМЯ ФАКУЛЬТЕТА
-        String [] getFacultyName(){
+        this.faculty = new Faculty();
+        this.group = new Group();
+        this.courses = new Courses();
+        this.schedule = new Schedule();
+    }
 
-            return faculty.getFacultyName();
-        }
+    //ВОЗВРАЩАЕТ ИМЯ ФАКУЛЬТЕТА
+    String[] getFacultyName() {
 
-        //ВОЗВРАЩАЕТ НОМЕР КУРСА
-        String [] getCoursesName (){
+        return faculty.getFacultyName();
+    }
 
-            return faculty.getCoursesName();
-        }
+    //УСТАНОВИТЬ ЗНАЧЕНИЕ ФАКУЛЬТЕТА
+    public void setIndexFaculty(int indexFaculty) {
 
-        //ВОЗВРАЩАЕТ ГРУППЫ
-        String [] getGroups(){
+        faculty.setIndexFaculty(indexFaculty);
+    }
 
-            faculty.setIndexFaculty(indexFaculty);
-            return faculty.getGroups(indexCourses);
-        }
+    //УСТАНОВИТЬ ЗНАЧЕНИЕ ИНДЕКСА КУРСА
+    void setIndexCourses(int indexCourses) {
 
-        //ВОЗВРАЩАЕТ РАСПИСАНИЕ
-        ArrayList<String[]> getSchedule(){
+        this.courses.setIndexCourses(indexCourses);
+    }
 
-            return faculty.getSchedule(indexGroup);
-        }
+    //ВОЗВРАЩАЕТ НОМЕР КУРСА
+    String[] getCoursesName() {
+
+        return courses.getCoursesName();
+    }
+
+    //ВОЗВРАЩАЕТ ГРУППЫ
+    String[] getGroups() {
+
+        return group.getGroups(faculty.getIndexFaculty(),courses.getIndexCourses());
+    }
+
+    //УСТАНОВИТЬ ЗНАЧЕНИЕ ГРУППЫ
+    void setIndexGroup(int indexGroup) {
+
+       this.group.setIndexGroup(indexGroup);
+    }
+
+    //ВОЗВРАЩАЕТ РАСПИСАНИЕ
+    ArrayList<String[]> getSchedule() {
+
+        return schedule.getSchedule(group.getIndexGroup(),faculty.getIndexFaculty(),courses.getIndexCourses());
+    }
 }
