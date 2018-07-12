@@ -9,8 +9,6 @@ class Gui extends JFrame {
     private JComboBox<String> valueCourses = new JComboBox<>(university.getCoursesName());
     private JComboBox<String> nameGroup = new JComboBox<>();
     private ScheduleTableModel stm = new ScheduleTableModel();
-
-
     private JTable table = new JTable(stm);
     private JScrollPane scrollPane = new JScrollPane(table);
 
@@ -23,10 +21,8 @@ class Gui extends JFrame {
         frame.setVisible(true);//отбражение формы
         frame.setLocationRelativeTo(null);//локация формы( локация в какой-то форме)
         frame.setLayout(new GridLayout(2, 1));//расположение компонентов
-
         JPanel panel = new JPanel(new GridLayout());
         JPanel panel1 = new JPanel(new GridLayout(6, 1));
-
         JLabel label = new JLabel("Институт|Факультет");
         panel1.add(label);
         panel1.add(nameFakInst);
@@ -53,7 +49,6 @@ class Gui extends JFrame {
             }
         };
 
-
         ActionListener actionListener1 = e -> {
 
             university.setIndexGroup(nameGroup.getSelectedIndex());//передача индекса группы
@@ -66,7 +61,6 @@ class Gui extends JFrame {
                 frame.validate();
             }
         };
-
 
         valueCourses.addActionListener(actionListener);
         nameFakInst.addActionListener(actionListener);

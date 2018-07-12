@@ -7,7 +7,6 @@ class University {
     private Courses courses;
     private Schedule schedule;
 
-
     //КОНСТРУКТОР
     University() {
 
@@ -44,18 +43,18 @@ class University {
     //ВОЗВРАЩАЕТ ГРУППЫ
     String[] getGroups() {
 
-        return group.getGroups(faculty.getIndexFaculty(),courses.getIndexCourses());
+        return group.getGroups(faculty.getIndexFaculty(), courses.getIndexCourses());
     }
 
     //УСТАНОВИТЬ ЗНАЧЕНИЕ ГРУППЫ
     void setIndexGroup(int indexGroup) {
 
-       this.group.setIndexGroup(indexGroup);
+        this.group.setIndexGroup(indexGroup);
     }
 
     //ВОЗВРАЩАЕТ РАСПИСАНИЕ
     ArrayList<String[]> getSchedule() {
 
-        return schedule.getSchedule(group.getIndexGroup(),faculty.getIndexFaculty(),courses.getIndexCourses());
+        return schedule.getSchedule(group.getIndexGroup(), faculty.getIndexFaculty(), courses.getIndexCourses());
     }
 }
