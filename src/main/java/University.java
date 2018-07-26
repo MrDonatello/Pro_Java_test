@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 class University {
@@ -41,7 +42,7 @@ class University {
     }
 
     //ВОЗВРАЩАЕТ ГРУППЫ
-    String[] getGroups() {
+    String[] getGroups() throws SQLException, ClassNotFoundException {
 
         return group.getGroups(faculty.getIndexFaculty(), courses.getIndexCourses());
     }
