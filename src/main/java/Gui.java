@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.*;
 
 class Gui extends JFrame {
@@ -16,7 +17,7 @@ class Gui extends JFrame {
     Gui() {
 
         JFrame frame = new JFrame("Расписание занятий");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//открытие и закрытие
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//открытие и закрытие1
         frame.setSize(800, 500);//размер формы
         frame.setVisible(true);//отбражение формы
         frame.setLocationRelativeTo(null);//локация формы( локация в какой-то форме)
@@ -42,7 +43,13 @@ class Gui extends JFrame {
 
             if (nameFakInst.getSelectedIndex() != 0 && valueCourses.getSelectedIndex() != 0) {
 
-                nameGroup.setModel(new DefaultComboBoxModel<>(university.getGroups()));
+                try {
+                    nameGroup.setModel(new DefaultComboBoxModel<>(university.getGroups()));
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
+                }
             } else {
 
                 nameGroup.removeAllItems();
