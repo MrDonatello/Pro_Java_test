@@ -2,12 +2,7 @@ import java.sql.*;
 
 class Group {
 
-    private DataBase dataBase;
     private int indexGroup;
-
-    Group() {
-        this.dataBase = new DataBase();
-    }
 
     int getIndexGroup() {
         return indexGroup;
@@ -17,9 +12,8 @@ class Group {
         this.indexGroup = indexGroup;
     }
 
-    //ВОЗВРАЩАЕТ СПИСОК ГРУПП
     String[] getGroups(int indexFaculty, int indexCourses) throws SQLException, ClassNotFoundException {
 
-        return dataBase.getGroups(indexFaculty, indexCourses);
+        return Gui.dataBase.getGroups(indexFaculty, indexCourses);
     }
 }

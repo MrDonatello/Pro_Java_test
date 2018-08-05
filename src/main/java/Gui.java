@@ -12,6 +12,7 @@ class Gui extends JFrame {
     private ScheduleTableModel stm = new ScheduleTableModel();
     private JTable table = new JTable(stm);
     private JScrollPane scrollPane = new JScrollPane(table);
+    static DataBase dataBase = new DataBase();
 
 
     Gui() {
@@ -40,14 +41,10 @@ class Gui extends JFrame {
 
             university.setIndexFaculty(nameFakInst.getSelectedIndex());//передача индекса факультета
             university.setIndexCourses(valueCourses.getSelectedIndex());//передача индекса курса
-
             if (nameFakInst.getSelectedIndex() != 0 && valueCourses.getSelectedIndex() != 0) {
-
                 try {
                     nameGroup.setModel(new DefaultComboBoxModel<>(university.getGroups()));
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                } catch (ClassNotFoundException e1) {
+                } catch (SQLException | ClassNotFoundException e1) {
                     e1.printStackTrace();
                 }
             } else {
@@ -56,16 +53,19 @@ class Gui extends JFrame {
             }
         };
 
+
         ActionListener actionListener1 = e -> {
-
             university.setIndexGroup(nameGroup.getSelectedIndex());//передача индекса группы
-
             if (nameGroup.getSelectedIndex() != 0) {
-
-                stm.addDate(university.getSchedule());
+                try {
+                    stm.addDate(university.getSchedule());
+                } catch (SQLException | ClassNotFoundException e1) {
+                    e1.printStackTrace();
+                }
                 panel.add(scrollPane);
                 frame.add(panel);
                 frame.validate();
+
             }
         };
 

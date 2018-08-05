@@ -53,8 +53,7 @@ public class ScheduleTableModel extends AbstractTableModel {
     }
 
     //Добавление на лист
-    void addDate(ArrayList<String[]> row) {
-
+        void addDate(ArrayList<String[]> row) {
         dataArrayList.clear();
         dataArrayList.addAll(row);
     }

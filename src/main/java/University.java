@@ -8,7 +8,6 @@ class University {
     private Courses courses;
     private Schedule schedule;
 
-    //КОНСТРУКТОР
     University() {
 
         this.faculty = new Faculty();
@@ -24,20 +23,17 @@ class University {
     }
 
     //УСТАНОВИТЬ ЗНАЧЕНИЕ ФАКУЛЬТЕТА
-    public void setIndexFaculty(int indexFaculty) {
-
+     void setIndexFaculty(int indexFaculty) {
         faculty.setIndexFaculty(indexFaculty);
     }
 
     //УСТАНОВИТЬ ЗНАЧЕНИЕ ИНДЕКСА КУРСА
     void setIndexCourses(int indexCourses) {
-
         this.courses.setIndexCourses(indexCourses);
     }
 
     //ВОЗВРАЩАЕТ НОМЕР КУРСА
     String[] getCoursesName() {
-
         return courses.getCoursesName();
     }
 
@@ -54,7 +50,7 @@ class University {
     }
 
     //ВОЗВРАЩАЕТ РАСПИСАНИЕ
-    ArrayList<String[]> getSchedule() {
+    ArrayList<String[]> getSchedule() throws SQLException, ClassNotFoundException {
 
         return schedule.getSchedule(group.getIndexGroup(), faculty.getIndexFaculty(), courses.getIndexCourses());
     }
