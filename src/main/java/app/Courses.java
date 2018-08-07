@@ -1,10 +1,13 @@
+package app;
+
+import java.sql.SQLException;
 
 class Courses {
 
     private int indexCourses;
 
 
-    public int getIndexCourses() {
+    int getIndexCourses() {
         return indexCourses;
     }
 
@@ -13,9 +16,8 @@ class Courses {
         this.indexCourses = indexCourses;
     }
 
-    //ВОЗВРАЩАЕТ НОМЕР КУРСА
-    String[] getCoursesName() {
+    String[] getCoursesName() throws SQLException {
 
-        return new String[]{"", "1", "2", "3", "4", "5"};
+        return Gui.dataBase.getCourses();
     }
 }

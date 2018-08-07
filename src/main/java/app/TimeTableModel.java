@@ -1,11 +1,13 @@
+package app;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-public class ScheduleTableModel extends AbstractTableModel {
+public class TimeTableModel extends AbstractTableModel {
 
     private ArrayList<String[]> dataArrayList;
 
-    ScheduleTableModel() {
+    TimeTableModel() {
 
         dataArrayList = new ArrayList<>();
 

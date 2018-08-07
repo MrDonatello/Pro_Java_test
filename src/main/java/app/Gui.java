@@ -1,3 +1,5 @@
+package app;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -9,13 +11,13 @@ class Gui extends JFrame {
     private JComboBox<String> nameFakInst = new JComboBox<>(university.getFacultyName());
     private JComboBox<String> valueCourses = new JComboBox<>(university.getCoursesName());
     private JComboBox<String> nameGroup = new JComboBox<>();
-    private ScheduleTableModel stm = new ScheduleTableModel();
+    private TimeTableModel stm = new TimeTableModel();
     private JTable table = new JTable(stm);
     private JScrollPane scrollPane = new JScrollPane(table);
     static DataBase dataBase = new DataBase();
 
 
-    Gui() {
+    Gui() throws SQLException {
 
         JFrame frame = new JFrame("Расписание занятий");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//открытие и закрытие1
@@ -38,13 +40,12 @@ class Gui extends JFrame {
 
 
         ActionListener actionListener = e -> {
-
             university.setIndexFaculty(nameFakInst.getSelectedIndex());//передача индекса факультета
             university.setIndexCourses(valueCourses.getSelectedIndex());//передача индекса курса
             if (nameFakInst.getSelectedIndex() != 0 && valueCourses.getSelectedIndex() != 0) {
                 try {
                     nameGroup.setModel(new DefaultComboBoxModel<>(university.getGroups()));
-                } catch (SQLException | ClassNotFoundException e1) {
+                } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
             } else {
@@ -55,11 +56,11 @@ class Gui extends JFrame {
 
 
         ActionListener actionListener1 = e -> {
-            university.setIndexGroup(nameGroup.getSelectedIndex());//передача индекса группы
             if (nameGroup.getSelectedIndex() != 0) {
+                university.setIndexGroup(nameGroup.getSelectedIndex());//передача индекса группы
                 try {
-                    stm.addDate(university.getSchedule());
-                } catch (SQLException | ClassNotFoundException e1) {
+                    stm.addDate(university.getTimetable());
+                } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
                 panel.add(scrollPane);

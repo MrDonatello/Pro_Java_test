@@ -1,3 +1,5 @@
+package app;
+
 import java.sql.*;
 
 class Group {
@@ -12,7 +14,7 @@ class Group {
         this.indexGroup = indexGroup;
     }
 
-    String[] getGroups(int indexFaculty, int indexCourses) throws SQLException, ClassNotFoundException {
+    String[] getGroups(int indexFaculty, int indexCourses) throws SQLException {
 
         return Gui.dataBase.getGroups(indexFaculty, indexCourses);
     }

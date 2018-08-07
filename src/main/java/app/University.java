@@ -1,3 +1,5 @@
+package app;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -6,18 +8,18 @@ class University {
     private Faculty faculty;
     private Group group;
     private Courses courses;
-    private Schedule schedule;
+    private Timetable timetable;
 
     University() {
 
         this.faculty = new Faculty();
         this.group = new Group();
         this.courses = new Courses();
-        this.schedule = new Schedule();
+        this.timetable = new Timetable();
     }
 
     //ВОЗВРАЩАЕТ ИМЯ ФАКУЛЬТЕТА
-    String[] getFacultyName() {
+    String[] getFacultyName() throws SQLException {
 
         return faculty.getFacultyName();
     }
@@ -33,12 +35,12 @@ class University {
     }
 
     //ВОЗВРАЩАЕТ НОМЕР КУРСА
-    String[] getCoursesName() {
+    String[] getCoursesName() throws SQLException {
         return courses.getCoursesName();
     }
 
     //ВОЗВРАЩАЕТ ГРУППЫ
-    String[] getGroups() throws SQLException, ClassNotFoundException {
+    String[] getGroups() throws SQLException {
 
         return group.getGroups(faculty.getIndexFaculty(), courses.getIndexCourses());
     }
@@ -50,8 +52,8 @@ class University {
     }
 
     //ВОЗВРАЩАЕТ РАСПИСАНИЕ
-    ArrayList<String[]> getSchedule() throws SQLException, ClassNotFoundException {
+    ArrayList<String[]> getTimetable() throws SQLException {
 
-        return schedule.getSchedule(group.getIndexGroup(), faculty.getIndexFaculty(), courses.getIndexCourses());
+        return timetable.getSchedule(group.getIndexGroup(), faculty.getIndexFaculty(), courses.getIndexCourses());
     }
 }
